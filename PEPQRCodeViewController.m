@@ -39,7 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupNavigationItem];
+//    [self setupNavigationItem];
     [self setupSubView];
     
     __weak typeof(self) weakself = self;
@@ -122,7 +122,7 @@
 
 - (void)setupNavigationItem {
     UIBarButtonItem *photoLibrary = [[UIBarButtonItem alloc] initWithTitle:@"相册" style:UIBarButtonItemStylePlain target:self action:@selector(jumpPickerController)];
-    self.navigationItem.rightBarButtonItem = photoLibrary;
+    self.navigationController.navigationItem.rightBarButtonItem = photoLibrary;
 }
 
 
@@ -168,7 +168,7 @@
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];  //读取设备授权状态
     if (authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied) {
         
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"当前没有摄像头权限，请在设置中打开摄像头权限" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"当前没有摄像头权限，请在设置中打开相机权限" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *settingAction = [UIAlertAction actionWithTitle:@"去设置" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
